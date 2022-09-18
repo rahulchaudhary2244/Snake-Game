@@ -4,7 +4,7 @@ const foodSound = new Audio("../music/food.mp3");
 const gameOverSound = new Audio("../music/gameOver.mp3");
 const moveSound = new Audio("../music/move.mp3");
 const musicSound = new Audio("../music/music.mp3");
-const snakeSpeed = 6; // time (in seconds) = 1 / snakeSpeed
+const snakeSpeed = 10; // time (in seconds) = 1 / snakeSpeed
 const gameBoardDimensions = { row: 30, column: 30 };
 let snakeBodyArray = [{ x: 13, y: 15 }];
 const defaultFood = { x: 6, y: 6 };
@@ -51,7 +51,7 @@ function isCollide(snakeBodyArray) {
       snakeBodyArray[i].x === snakeBodyArray[0].x &&
       snakeBodyArray[i].y === snakeBodyArray[0].y
     ) {
-      console.warn("collision of snake head into snake body");
+      console.warn("Collision of snake head into snake body");
       return true;
     }
   }
