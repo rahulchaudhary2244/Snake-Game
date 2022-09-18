@@ -5,15 +5,17 @@ const gameOverSound = new Audio("../music/gameOver.mp3");
 const moveSound = new Audio("../music/move.mp3");
 const musicSound = new Audio("../music/music.mp3");
 const snakeSpeed = 6; // time (in seconds) = 1 / snakeSpeed
-const gameBoardDimensions = { row: 28, column: 22 };
-const defaultSnakeBodyArray = [{ x: 13, y: 15 }];
+const gameBoardDimensions = { row: 30, column: 30 };
+let snakeBodyArray = [{ x: 13, y: 15 }];
 const defaultFood = { x: 6, y: 6 };
 const defaultScore = 0;
 let inputDirection = defaultInputDirection;
 let lastPaintTime = 0;
-let snakeBodyArray = defaultSnakeBodyArray;
 let food = defaultFood;
 let score = defaultScore;
+const foodElement = document.createElement("img");
+foodElement.src = '../img/insect.png'
+foodElement.classList.add("food");
 // 1:01:45
 // game functions
 function main(currentTime) {
@@ -63,11 +65,12 @@ function gameEngine() {
     gameOverSound.play();
     musicSound.pause();
     inputDirection = defaultInputDirection;
-    snakeBodyArray = defaultSnakeBodyArray;
+    snakeBodyArray = [{ x: 13, y: 15 }];
     food = defaultFood;
-    alert("Game Over, Press any key to play again.");
     musicSound.play;
+    alert(`Gameover, Your highest score is ${score}.`);
     score = 0;
+    document.getElementById('score').innerText = score;
   }
 
   // part2 : updating the snake body array when it eats the food
@@ -85,6 +88,8 @@ function gameEngine() {
       x: Math.round(a + (b - a) * Math.random()),
       y: Math.round(a + (b - a) * Math.random()),
     };
+    score++;
+    document.getElementById('score').innerText = score
   }
 
   // part3 : moving the snake
@@ -100,17 +105,19 @@ function gameEngine() {
     snakeElement = document.createElement("div");
     snakeElement.style.gridRowStart = e.y;
     snakeElement.style.gridColumnStart = e.x;
-    index === 0
-      ? snakeElement.classList.add("head")
-      : snakeElement.classList.add("snake");
+    if (index === 0) 
+      snakeElement.classList.add("snake-head");
+    else if (index === snakeBodyArray.length - 1)
+      snakeElement.classList.add("snake-body");
+    else snakeElement.classList.add("snake-tail");
+    
     board.appendChild(snakeElement);
   });
 
   // part4: display the food
-  foodElement = document.createElement("div");
   foodElement.style.gridRowStart = food.y;
   foodElement.style.gridColumnStart = food.x;
-  foodElement.classList.add("food");
+  
   board.appendChild(foodElement);
 }
 
