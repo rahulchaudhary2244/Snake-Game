@@ -27,21 +27,20 @@
 
 .snake-head {
   background-color: #1a5408;
-  border-radius: 50%;
+  border-radius: 5px;
 }
 
 .snake-body {
   background-color: #39c113bc;
-  border-radius: 50%;
+  border-radius: 5px;
 }
 
 .snake-tail {
   background-color: #24800ada;
-  border-radius: 50%;
+  border-radius: 5px;
 }
 
 .food {
-  height: 100%;
-  width: 100%;
-  object-fit: contain;
+  background-color: #ea0707eb;
+  border-radius: 50%;
 }

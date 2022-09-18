@@ -13,8 +13,7 @@ let inputDirection = defaultInputDirection;
 let lastPaintTime = 0;
 let food = defaultFood;
 let score = defaultScore;
-const foodElement = document.createElement("img");
-foodElement.src = '../img/insect.png'
+const foodElement = document.createElement("div");
 foodElement.classList.add("food");
 // 1:01:45
 // game functions
@@ -105,11 +104,13 @@ function gameEngine() {
     snakeElement = document.createElement("div");
     snakeElement.style.gridRowStart = e.y;
     snakeElement.style.gridColumnStart = e.x;
+
     if (index === 0) 
       snakeElement.classList.add("snake-head");
-    else if (index === snakeBodyArray.length - 1)
-      snakeElement.classList.add("snake-body");
-    else snakeElement.classList.add("snake-tail");
+    else if (index % 2 === 0)
+      snakeElement.classList.add("snake-tail");
+    else snakeElement.classList.add("snake-body");
+    
     
     board.appendChild(snakeElement);
   });
