@@ -1,4 +1,5 @@
-# Snake-Game
-Sname Game using js/html/css
+## Sname Game using Javascript/HTML/CSS
 
-Check it out here - https://rahulchaudhary2244.github.io/Snake-Game/
+[Play now](https://rahulchaudhary2244.github.io/Snake-Game/) 
+
+![snake-game-gif.gif](https://github.com/rahulchaudhary2244/media-repository/blob/main/snake-game-gif.gif)
